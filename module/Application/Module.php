@@ -26,7 +26,8 @@ class Module
         return array_merge_recursive(
         		include __DIR__ . '/config/module.config.php',
         		include __DIR__ . '/config/router.config.php',
-        		include __DIR__ . '/config/plugins.config.php'
+        		include __DIR__ . '/config/plugins.config.php',
+        		include __DIR__ . '/config/doctrine.config.php'
         );
     }
 
