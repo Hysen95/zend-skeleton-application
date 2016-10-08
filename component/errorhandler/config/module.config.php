@@ -1,29 +1,15 @@
 <?php
 
-$mail = [];
+$mailPath = __DIR__ . '/../../../config/autoload/errorhandler.mail.local.php';
 
-$mail["config"] = 
-[
-		'fromEmail' => 'noreply@tesoridelgusto.it',
-		'fromName' => 'Error Handler',
-		'SMTP' => [
-				'enabled' => true,
-				'config' => [
-						'name' => 'fast.smtpok.com',
-						'host' => 'fast.smtpok.com',
-						'port' => 1025,
-						'connection_class' => 'login',
-						'connection_config' => [
-								'username' => 's61170_7',
-								'password' => 'IQEIO-I2UU',
-								'ssl' => 'tls'
-						]
-				]
-		],
-		'toEmails' => [
-				"overflowrish@gmail.com"
-		]
-];
+$mail = NULL;
+
+if (file_exists($mailPath)) {
+	$includedMailConfig = include $mailPath;
+	if (is_array($includedMailConfig) && !empty($includedMailConfig)) {
+		$mail = $includedMailConfig;
+	}
+}	
 
 $config = [ 
 		
@@ -41,24 +27,23 @@ $config = [
 		
 		'zf_error_handler' => [ 
 				'error_actions' => [ 
-						404 => [ 
+						'404' => [ 
 								'log' => [ 
 										'config' => [ 
 												'priority' => \Zend\Log\Logger::INFO,
 												'stream' => __DIR__ . '/../../../data/logs/error404_' . date ( 'Y-m-d' ) . '.log' 
 										] 
-								] 
+								],
+								'mail' => $mail,
 						],
-						500 => [ 
+						'500' => [ 
 								'log' => [ 
 										'config' => [ 
 												'priority' => \Zend\Log\Logger::ERR,
 												'stream' => __DIR__ . '/../../../data/logs/' . date ( 'Y-m-d' ) . '.log' 
 										] 
 								],
-								'mail' => [ 
-										'config' => $mail["config"],
-								] 
+								'mail' => $mail,
 						],
 						'default' => [ 
 								'log' => [ 
@@ -66,7 +51,8 @@ $config = [
 												'priority' => \Zend\Log\Logger::WARN,
 												'stream' => __DIR__ . '/../../../data/logs/default_' . date ( 'Y-m-d' ) . '.log' 
 										] 
-								] 
+								],
+								'mail' => $mail,
 						] 
 				],
 				'php_errors_handler' => [ 
@@ -77,9 +63,7 @@ $config = [
 												'stream' => __DIR__ . '/../../../data/logs/phpErrors_' . date ( 'Y-m-d' ) . '.log' 
 										] 
 								],
-								'mail' => [
-										'config' => $mail["config"],
-								] 
+								'mail' => $mail,
 						] 
 				] 
 		] 
