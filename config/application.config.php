@@ -11,13 +11,20 @@ if (!defined("APP_ENV")) {
 	define("APP_ENV", $env);
 }
 
+$modules = array();
+
+$globModules = glob('config/modules/{{,*.}' .APP_ENV. '}.{global,local}.php', GLOB_BRACE);
+
+foreach ($globModules as $modulesName) {
+	$includedModulesName = include $modulesName;
+	foreach ($includedModulesName as $value) {
+		$modules[$value] = $value;
+	}
+}
+
 $config = array(
     // This should be an array of module namespaces used in the application.
-    'modules' => array_merge(
-    	require __DIR__ . '/modules/vendor.' . APP_ENV . '.php',
-    	require __DIR__ . '/modules/component.' . APP_ENV . '.php',
-    	require __DIR__ . '/modules/application.' . APP_ENV . '.php'
-    ),
+    'modules' => $modules,
 
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => array(
