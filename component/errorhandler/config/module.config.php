@@ -1,6 +1,10 @@
 <?php
 
-$mailPath = __DIR__ . '/../../../config/autoload/errorhandler.mail.local.php';
+$mailPath = __DIR__ . '/../../../config/autoload/errorhandler.mail';
+
+$currentEnv = defined("APP_ENV") ? "." . APP_ENV : "";
+
+$mailPath .= $currentEnv . ".local.php";
 
 $mail = NULL;
 
