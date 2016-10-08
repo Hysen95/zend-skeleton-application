@@ -14,9 +14,9 @@ if (!defined("APP_ENV")) {
 $config = array(
     // This should be an array of module namespaces used in the application.
     'modules' => array_merge(
-    	require __DIR__ . '/modules/vendor.modules.php',
-    	require __DIR__ . '/modules/component.modules.php',
-    	require __DIR__ . '/modules/application.modules.php'
+    	require __DIR__ . '/modules/vendor.' . APP_ENV . '.php',
+    	require __DIR__ . '/modules/component.' . APP_ENV . '.php',
+    	require __DIR__ . '/modules/application.' . APP_ENV . '.php'
     ),
 
     // These are various options for the listeners attached to the ModuleManager
