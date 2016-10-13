@@ -1,10 +1,4 @@
 <?php
-/**
- * If you need an environment-specific system or application configuration,
- * there is an example in the documentation
- * @see http://framework.zend.com/manual/current/en/tutorials/config.advanced.html#environment-specific-system-configuration
- * @see http://framework.zend.com/manual/current/en/tutorials/config.advanced.html#environment-specific-application-configuration
- */
 
 if (!defined("APP_ENV")) {
 	$env = getenv("APP_ENV") ?: "development";
@@ -14,6 +8,7 @@ if (!defined("APP_ENV")) {
 $modules = array();
 
 $globModules = glob('config/modules/{{,*.}' .APP_ENV. '}.{global,local}.php', GLOB_BRACE);
+rsort($globModules);
 
 foreach ($globModules as $modulesName) {
 	$includedModulesName = include $modulesName;
@@ -33,7 +28,6 @@ $config = array(
         // namespace, the value of that key the specific path to that module's
         // Module class.
         'module_paths' => array(
-        	'./component',
             './module',
             './vendor',
         ),

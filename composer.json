@@ -10,8 +10,13 @@
     "require": {
         "php": ">=5.5",
         "zendframework/zendframework": "~2.5",
-        "zendframework/zend-developer-tools": "^1.1",
-        "doctrine/doctrine-orm-module": "^1.1",
-        "doctrine/migrations": "^1.4"
+        "zendframework/zend-developer-tools": "*",
+        "doctrine/doctrine-orm-module": "*",
+        "doctrine/migrations": "*",
+        "neilime/zf2-twb-bundle": "2.*@stable",
+        "neilime/zf2-assets-bundle": "dev-master",
+        "ghislainf/zf2-whoops": "dev-master",
+       	"davidhavl/dherrorlogging": "~2.0",
+        "mpalourdio/zf2-maintenance-mode": "^0.2.2"
     }
 }
