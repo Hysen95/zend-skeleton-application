@@ -9,3 +9,5 @@ nbproject
 .settings
 vendor
 composer.phar
+data/cache/
+data/logs/
