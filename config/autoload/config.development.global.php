@@ -1,7 +1,7 @@
 <?php
 
-$config = array(
+$config = [
 		
-);
+];
 
 return $config;
