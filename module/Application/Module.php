@@ -11,6 +11,8 @@ namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Stdlib\ArrayUtils;
+use Zend\Config\Config;
 
 class Module
 {
@@ -23,12 +25,16 @@ class Module
 
     public function getConfig()
     {
-        return array_merge_recursive(
-        		include __DIR__ . '/config/module.config.php',
-        		include __DIR__ . '/config/router.config.php',
-        		include __DIR__ . '/config/plugins.config.php',
-        		include __DIR__ . '/config/doctrine.config.php'
-        );
+    	$configFiles = glob(__DIR__ . '/config/{,*.}config.php', GLOB_BRACE);
+    	$configObject = new Config([], true);
+    	foreach ($configFiles as $configFile) {
+    		$configArray = include $configFile;
+    		if (is_array($configArray)) {
+    			$configSubObject = new Config($configArray, true);
+    			$configObject->merge($configSubObject);
+    		}
+    	}
+        return $configObject;
     }
 
     public function getAutoloaderConfig()

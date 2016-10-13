@@ -1,49 +1,49 @@
 <?php
 
-$config = array (
-		'router' => array (
-				'routes' => array (
-						'home' => array (
+$config = [
+		'router' => [
+				'routes' => [
+						'home' => [
 								'type' => 'Zend\Mvc\Router\Http\Literal',
-								'options' => array (
+								'options' => [
 										'route' => '/',
-										'defaults' => array (
+										'defaults' => [
 												'controller' => 'Application\Controller\Index',
 												'action' => 'index' 
-										) 
-								) 
-						),
+										], 
+								], 
+						],
 						// The following is a route to simplify getting started creating
 						// new controllers and actions without needing to create a new
 						// module. Simply drop new controllers in, and you can access them
 						// using the path /application/:controller/:action
-						'application' => array (
+						'application' => [
 								'type' => 'Literal',
-								'options' => array (
+								'options' => [
 										'route' => '/application',
-										'defaults' => array (
+										'defaults' => [
 												'__NAMESPACE__' => 'Application\Controller',
 												'controller' => 'Index',
 												'action' => 'index' 
-										) 
-								),
+										], 
+								],
 								'may_terminate' => true,
-								'child_routes' => array (
-										'default' => array (
+								'child_routes' => [
+										'default' => [
 												'type' => 'Segment',
-												'options' => array (
+												'options' => [
 														'route' => '/[:controller[/:action]]',
-														'constraints' => array (
+														'constraints' => [
 																'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
 																'action' => '[a-zA-Z][a-zA-Z0-9_-]*' 
-														),
-														'defaults' => array () 
-												) 
-										) 
-								) 
-						) 
-				) 
-		) 
-);
+														],
+														'defaults' => [], 
+												], 
+										], 
+								], 
+						], 
+				], 
+		], 
+];
 
 return $config;

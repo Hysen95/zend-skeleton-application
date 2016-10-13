@@ -1,19 +1,22 @@
 <?php
 
+use Zend\Config\Config;
+
 if (!defined("APP_ENV")) {
 	$env = getenv("APP_ENV") ?: "development";
 	define("APP_ENV", $env);
 }
 
-$modules = [];
+$modules = new Config([], true);
 
 $globModules = glob('config/modules/{{,*.}' .APP_ENV. '}.{global,local}.php', GLOB_BRACE);
 rsort($globModules);
 
-foreach ($globModules as $modulesName) {
-	$includedModulesName = include $modulesName;
-	foreach ($includedModulesName as $value) {
-		$modules[$value] = $value;
+foreach ($globModules as $modulesFile) {
+	$modulesArray = include $modulesFile;
+	if (is_array($modulesArray)) {
+		$modulesObject = new Config($modulesArray, true);
+		$modules->merge($modulesObject);
 	}
 }
 
