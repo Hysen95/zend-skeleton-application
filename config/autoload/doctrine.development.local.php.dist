@@ -1,0 +1,19 @@
+<?php
+
+$config = [
+		'doctrine' => [
+				'connection' => [
+						'orm_default' =>	[
+								'params' => [
+										'host'     => 'host',
+										'port'     => 'port',
+										'user'     => 'username',
+										'password' => 'password',
+										'dbname'   => 'database',
+								],
+						],
+				],
+		],
+];
+
+return $config;

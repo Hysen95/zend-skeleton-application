@@ -1,14 +1,13 @@
 <?php
 
-$config = array(
-	'doctrine' => array(
-			'connection' => array(
-					// default connection name
-					'orm_default' => array(
+$config = [
+	'doctrine' => [
+			'connection' => [
+					'orm_default' => [
 							'driverClass' => 'Doctrine\DBAL\Driver\PDOMySql\Driver',
-					)
-			)
-	),	
-);
+					],
+			],
+	],
+];
 
 return $config;

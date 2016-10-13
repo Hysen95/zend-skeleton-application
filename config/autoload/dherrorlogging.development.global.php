@@ -1,10 +1,4 @@
 <?php
-/**
- * DhErrorLogging Configuration
- *
- * If you have a ./config/autoload/ directory set up for your project, you can
- * drop this config file in it and change the values as you wish.
- */
 
 $config = array(
 
@@ -68,27 +62,28 @@ $config = array(
          *
          * Make sure and have table "error_log" with correct schema in your database
          */
-//          'db' => array(
-//           'name' => 'DhErrorLogging\DbWriter',
-//           'options' => array(
-//               'table_name' => 'errors_logs',
-//               'table_map' => array(
-//                   'timestamp' => 'creation_time',
-//                   'type' => 'type',
-//                   'priorityName' => 'priority',
-//                   'message' => 'message',
-//                   'reference'  => 'reference',
-//                   'file'  => 'file',
-//                   'line'  => 'line',
-//                   'trace' => 'trace',
-//                   'xdebug' => 'xdebug',
-//                   'uri' => 'uri',
-//                   'request' => 'request',
-//                   'ip' => 'ip',
-//                   'session_id' => 'session_id'
-//                )
-//             )
-//             )
+         'db' => array(
+          'name' => 'DhErrorLogging\DbWriter',
+          'options' => array(
+              'table_name' => 'errors_logs',
+              'table_map' => array(
+                  'id' => 'log_id',
+                  'timestamp' => 'creation_time',
+                  'reference'  => 'reference',
+                  'type' => 'type',
+                  'priorityName' => 'priority',
+                  'message' => 'message',
+                  'file'  => 'file',
+                  'line'  => 'line',
+                  'trace' => 'trace',
+                  'xdebug' => 'xdebug',
+                  'uri' => 'uri',
+                  'request' => 'request',
+                  'ip' => 'ip',
+                  'session_id' => 'session_id'
+               ),
+            ),
+        ),
 
     ),
 
@@ -118,7 +113,7 @@ $config = array(
      * Please specify the DI alias for the configured Zend\Db\Adapter\Adapter
      * instance that DhErrorLogging should use. Applicable only if you want to log into database via Zend Db.
      */
-     //'zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
+//      'zend_db_adapter' => 'Zend\Db\Adapter\Adapter',
 
 );
 

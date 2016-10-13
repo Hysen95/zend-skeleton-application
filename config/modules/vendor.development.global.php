@@ -2,11 +2,11 @@
 
 $config = array(
 	'Zf2Whoops',
-	'ZfMaintenanceMode',
 	'DhErrorLogging',
+	'ZfMaintenanceMode',
 	'ZendDeveloperTools',	
-// 	'DoctrineModule',
-// 	'DoctrineORMModule',
+	'DoctrineModule',
+	'DoctrineORMModule',
 	'TwbBundle',
 // 	'AssetsBundle',
 );
