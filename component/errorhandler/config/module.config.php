@@ -13,18 +13,20 @@ if (file_exists($mailPath)) {
 	if (is_array($includedMailConfig) && !empty($includedMailConfig)) {
 		$mail = $includedMailConfig;
 	}
-}	
+}
 
 $config = [ 
 		
 		'view_manager' => [ 
-				'display_not_found_reason' => true,
-				'display_exceptions' => true,
+				'display_not_found_reason' => (defined("APP_ENV") && APP_ENV != "production"),
+				'display_exceptions' => (defined("APP_ENV") && APP_ENV != "production"),
+		        'not_found_template'       => 'error/404',
+		        'exception_template'       => 'error/index',
 		],
 		
 		'phpSettings' => [ 
-				'display_startup_errors' => true,
-				'display_errors' => true,
+				'display_startup_errors' => (defined("APP_ENV") && APP_ENV != "production"),
+				'display_errors' => (defined("APP_ENV") && APP_ENV != "production"),
 				"error_reporting_type" => E_ALL,
 				"date_default_timezone_set" => "Europe/Rome", 
 		],
@@ -68,8 +70,12 @@ $config = [
 										] 
 								],
 								'mail' => $mail,
-						] 
-				] 
+						],
+			            'render_view' => [
+			                'layout_view' => 'layout/layout',
+			                'view' => 'error/index'
+			            ],
+				],
 		] 
 ];
 
