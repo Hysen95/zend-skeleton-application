@@ -1,14 +1,9 @@
 <?php
 
 $config = array(
-	'Zf2Whoops',
-	'DhErrorLogging',
 	'ZfMaintenanceMode',
-	'ZendDeveloperTools',	
-	'DoctrineModule',
-	'DoctrineORMModule',
+	'ZendDeveloperTools',
 	'TwbBundle',
-// 	'AssetsBundle',
 );
 
 return $config;

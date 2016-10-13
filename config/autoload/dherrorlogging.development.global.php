@@ -62,28 +62,28 @@ $config = array(
          *
          * Make sure and have table "error_log" with correct schema in your database
          */
-         'db' => array(
-          'name' => 'DhErrorLogging\DbWriter',
-          'options' => array(
-              'table_name' => 'errors_logs',
-              'table_map' => array(
-                  'id' => 'log_id',
-                  'timestamp' => 'creation_time',
-                  'reference'  => 'reference',
-                  'type' => 'type',
-                  'priorityName' => 'priority',
-                  'message' => 'message',
-                  'file'  => 'file',
-                  'line'  => 'line',
-                  'trace' => 'trace',
-                  'xdebug' => 'xdebug',
-                  'uri' => 'uri',
-                  'request' => 'request',
-                  'ip' => 'ip',
-                  'session_id' => 'session_id'
-               ),
-            ),
-        ),
+//          'db' => array(
+//           'name' => 'DhErrorLogging\DbWriter',
+//           'options' => array(
+//               'table_name' => 'errors_logs',
+//               'table_map' => array(
+//                   'id' => 'log_id',
+//                   'timestamp' => 'creation_time',
+//                   'reference'  => 'reference',
+//                   'type' => 'type',
+//                   'priorityName' => 'priority',
+//                   'message' => 'message',
+//                   'file'  => 'file',
+//                   'line'  => 'line',
+//                   'trace' => 'trace',
+//                   'xdebug' => 'xdebug',
+//                   'uri' => 'uri',
+//                   'request' => 'request',
+//                   'ip' => 'ip',
+//                   'session_id' => 'session_id'
+//                ),
+//             ),
+//         ),
 
     ),
 

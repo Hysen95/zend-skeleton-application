@@ -1,0 +1,8 @@
+<?php
+
+$config = [
+			'DoctrineModule',
+			'DoctrineORMModule',
+];
+
+return $config;
