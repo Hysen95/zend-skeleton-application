@@ -5,7 +5,7 @@ if (!defined("APP_ENV")) {
 	define("APP_ENV", $env);
 }
 
-$modules = array();
+$modules = [];
 
 $globModules = glob('config/modules/{{,*.}' .APP_ENV. '}.{global,local}.php', GLOB_BRACE);
 rsort($globModules);
